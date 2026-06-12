@@ -33,14 +33,6 @@ pipeline {
             }
         }
 
-        stage('Quality Gate') {
-            steps {
-                timeout(time: 5, unit: 'MINUTES') {
-                    waitForQualityGate abortPipeline: true
-                }
-            }
-        }
-
         stage('Deploy to Tomcat') {
             when {
                 expression { return env.TOMCAT_WEBAPPS != null && env.TOMCAT_WEBAPPS.trim() }

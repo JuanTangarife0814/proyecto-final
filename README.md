@@ -51,6 +51,7 @@ java -jar jenkins.war
 3. Configura el repo GitHub como fuente.
 4. Jenkins tomara el `Jenkinsfile` de la raiz del proyecto.
 5. El pipeline compila con Maven, analiza con SonarQube y puede copiar el WAR a Tomcat.
+6. Por ahora no depende del webhook para no detenerse en `waitForQualityGate`.
 
 ### Variables que debes configurar en Jenkins
 
@@ -73,3 +74,7 @@ Con este proyecto base, luego se puede conectar Jenkins para:
 3. Analizar con SonarQube.
 4. Desplegar el WAR en Tomcat.
 5. Enviar correo si falla el quality gate.
+
+## Nota sobre el webhook
+
+Si el webhook de SonarQube no funciona, el pipeline actual puede seguir avanzando sin bloquearse. Más adelante, cuando quieras dejar la integración completa, se puede volver a agregar la espera del Quality Gate y arreglar el webhook o usar una URL accesible desde SonarQube.
