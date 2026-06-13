@@ -6,7 +6,7 @@ pipeline {
     }
 
     parameters {
-        string(name: 'TOMCAT_WEBAPPS', defaultValue: 'C:\Users\juand\OneDrive\Documentos\2026-1\Pruebas\apache-tomcat-10.1.55-windows-x64\apache-tomcat-10.1.55\webapps', description: 'Ruta completa de la carpeta webapps de Tomcat')
+        string(name: 'TOMCAT_WEBAPPS', defaultValue: 'C:/Users/juand/OneDrive/Documentos/2026-1/Pruebas/apache-tomcat-10.1.55-windows-x64/apache-tomcat-10.1.55/webapps', description: 'Ruta completa de la carpeta webapps de Tomcat')
     }
 
     environment {
