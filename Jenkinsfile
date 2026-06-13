@@ -44,14 +44,14 @@ pipeline {
                     withCredentials([string(credentialsId: 'sonarqube-token', variable: 'SONAR_TOKEN')]) {
                         withSonarQubeEnv('SonarQube') {
                             writeFile file: 'check_quality_gate.ps1', text: '''
-$reportTask = Join-Path $env:WORKSPACE '.scannerwork/report-task.txt'
+$reportTask = Join-Path $env:WORKSPACE 'target/sonar/report-task.txt'
 
 if (-not (Test-Path $reportTask)) {
     Write-Output 'ERROR'
     exit 0
 }
 
-$taskId = (Select-String -Path $reportTask -Pattern '^ceTaskId=').ToString().Split('=')[-1].Trim()
+$taskId = (Select-String -Path $reportTask -Pattern '^ceTaskId=' | Select-Object -First 1).ToString().Split('=')[-1].Trim()
 
 if (-not $taskId) {
     Write-Output 'ERROR'
