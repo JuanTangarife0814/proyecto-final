@@ -11,8 +11,6 @@ Proyecto web Java basico empaquetado como WAR para desplegar en Tomcat.
 
 ## Compilar
 
-
-
 ```bash
 mvn clean package
 ```
