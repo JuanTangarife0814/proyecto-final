@@ -17,7 +17,7 @@
 </head>
 <body>
 <div class="box">
-    <h1>Proyecto Final para Jenkins, SonarQube y Tomcat</h1>
+    <h1>Proyecto Final</h1>
     <p>Esta aplicacion fue creada como base del examen final.</p>
     <ul>
         <li>Empaquetado como WAR</li>
