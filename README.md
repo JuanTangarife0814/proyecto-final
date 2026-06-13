@@ -3,11 +3,11 @@
 Proyecto web Java basico empaquetado como WAR para desplegar en Tomcat.
 
 ## Estructura
+- `src/main/webapp`: pagina inicial y configuracion web.
+- `Jenkinsfile`: pipeline para Jenkins.
 
 - `pom.xml`: configuracion Maven.
 - `src/main/java`: servlet de ejemplo.
-- `src/main/webapp`: pagina inicial y configuracion web.
-- `Jenkinsfile`: pipeline para Jenkins.
 
 ## Compilar
 
