@@ -62,15 +62,48 @@ pipeline {
 
     post {
         success {
-            echo 'Build OK. WAR generado y analizado correctamente.'
+            emailext(
+                to: "${NOTIFICATION_EMAIL}",
+                subject: "Build Exitoso - ${JOB_NAME} #${BUILD_NUMBER}",
+                body: "El pipeline finalizo correctamente.\n\n" +
+                    "Resultado: SUCCESS\n" +
+                    "El proyecto compilo, paso la validacion de SonarQube y fue desplegado en Tomcat.\n\n" +
+                    "Job: ${JOB_NAME}\n" +
+                    "Build: ${BUILD_NUMBER}\n" +
+                    "URL: ${BUILD_URL}\n" +
+                    "SonarQube: http://localhost:9000/dashboard?id=${SONAR_PROJECT_KEY}\n" +
+                    "Aplicacion: http://localhost:8081/${APP_NAME}"
+            )
+            echo 'Build OK. WAR generado, analizado y desplegado correctamente.'
         }
+
         failure {
             emailext(
                 to: "${NOTIFICATION_EMAIL}",
                 subject: "Build Fallido - ${JOB_NAME} #${BUILD_NUMBER}",
-                body: "El proyecto no paso el pipeline. Revisa Jenkins y SonarQube para ver el error.\n\nJob: ${JOB_NAME}\nBuild: ${BUILD_NUMBER}\nURL: ${BUILD_URL}"
+                body: "El pipeline fallo.\n\n" +
+                    "Resultado: FAILURE\n" +
+                    "El proyecto no paso alguna etapa: compilacion, SonarQube o despliegue.\n\n" +
+                    "Job: ${JOB_NAME}\n" +
+                    "Build: ${BUILD_NUMBER}\n" +
+                    "URL: ${BUILD_URL}\n" +
+                    "SonarQube: http://localhost:9000/dashboard?id=${SONAR_PROJECT_KEY}"
             )
             echo 'Build fallido. Revisar compilacion, SonarQube o despliegue.'
         }
     }
+
+    // post {
+    //     success {
+    //         echo 'Build OK. WAR generado y analizado correctamente.'
+    //     }
+    //     failure {
+    //         emailext(
+    //             to: "${NOTIFICATION_EMAIL}",
+    //             subject: "Build Fallido - ${JOB_NAME} #${BUILD_NUMBER}",
+    //             body: "El proyecto no paso el pipeline. Revisa Jenkins y SonarQube para ver el error.\n\nJob: ${JOB_NAME}\nBuild: ${BUILD_NUMBER}\nURL: ${BUILD_URL}"
+    //         )
+    //         echo 'Build fallido. Revisar compilacion, SonarQube o despliegue.'
+    //     }
+    // }
 }
