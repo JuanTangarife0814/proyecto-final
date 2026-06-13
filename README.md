@@ -61,12 +61,13 @@ java -jar jenkins.war
 - `TOMCAT_WEBAPPS`: ruta de la carpeta `webapps` de Tomcat, por ejemplo `C:\apache-tomcat-9\webapps`.
 
 ## Probar en Tomcat
-
+- `TOMCAT_WEBAPPS`: ruta de la carpeta `webapps` de Tomcat, por ejemplo `C:\Users\juand\OneDrive\Documentos\2026-1\Pruebas\apache-tomcat-10.1.55-windows-x64\apache-tomcat-10.1.55\webapps`.
 1. Copia `target/proyecto-final.war` a la carpeta `webapps` de Tomcat.
 2. Inicia Tomcat.
 3. Abre la aplicacion en el navegador.
-
+## Probar en Tomcat 10.1.55
 ## Siguiente paso para el examen
+1. Copia `target/proyecto-final.war` a la carpeta `webapps` de Tomcat.
 
 Con este proyecto base, luego se puede conectar Jenkins para:
 
