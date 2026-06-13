@@ -11,7 +11,7 @@ pipeline {
 
     environment {
         APP_NAME = 'proyecto-final'
-        WAR_FILE = 'target/proyecto-final.war'
+        // WAR_FILE = 'target/proyecto-final.war'
         SONAR_PROJECT_KEY = 'proyecto-final'
         SONAR_PROJECT_NAME = 'proyecto-final'
         NOTIFICATION_EMAIL = 'juandiegotangarifemontoya@gmail.com'
@@ -39,13 +39,25 @@ pipeline {
         }
 
         stage('Deploy to Tomcat') {
-            when {
-                expression { return params.TOMCAT_WEBAPPS != null && params.TOMCAT_WEBAPPS.trim() }
-            }
-            steps {
-                bat 'copy /Y "%WAR_FILE%" "%TOMCAT_WEBAPPS%\\%APP_NAME%.war"'
+             when {
+                 expression { return params.TOMCAT_WEBAPPS != null && params.TOMCAT_WEBAPPS.trim() }
+             }
+             steps {
+                bat '''
+                dir target
+                for %%F in (target\\*.war) do copy /Y "%%F" "%TOMCAT_WEBAPPS%\\%APP_NAME%.war"
+                '''
             }
         }
+
+        // stage('Deploy to Tomcat') {
+        //     when {
+        //         expression { return params.TOMCAT_WEBAPPS != null && params.TOMCAT_WEBAPPS.trim() }
+        //     }
+        //     steps {
+        //         bat 'copy /Y "%WAR_FILE%" "%TOMCAT_WEBAPPS%\\%APP_NAME%.war"'
+        //     }
+        // }
     }
 
     post {
