@@ -21,7 +21,7 @@
     <p>Esta aplicacion fue creada como base del examen final.</p>
     <ul>
         <li>Empaquetado como WAR</li>
-        <li>Compatible con Tomcat 9</li>
+        <li>Compatible con Tomcat 10</li>
         <li>Lista para integrarse con Jenkins</li>
     </ul>
     <p><a href="hello">Probar servlet</a></p>
