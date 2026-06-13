@@ -42,7 +42,8 @@ java -jar jenkins.war
 ```
 
 4. Abre `http://localhost:8080`.
-5. Instala los plugins de Git, Maven, SonarQube Scanner y Email Extension.
+
+6. Instala los plugins de Git, Maven, SonarQube Scanner y Email Extension.
 
 ### Como usar el pipeline
 
